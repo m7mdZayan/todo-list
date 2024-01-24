@@ -4,12 +4,18 @@ import { PlusOutlined } from '@ant-design/icons'
 import AddTodoModal from './components/addTodoModal'
 import { useState } from 'react'
 
+const setInitialValue = label => {
+  try {
+    return JSON.parse(localStorage.getItem(label)) || []
+  } catch (error) {
+    return []
+  }
+}
+
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')))
-  const [doneTasks, setDoneTasks] = useState(
-    JSON.parse(localStorage.getItem('doneTasks'))
-  )
+  const [todos, setTodos] = useState(setInitialValue('todos'))
+  const [doneTasks, setDoneTasks] = useState(setInitialValue('doneTasks'))
 
   const showModal = () => {
     setIsModalOpen(true)
@@ -23,15 +29,22 @@ const App = () => {
     setIsModalOpen(false)
   }
 
-  const deleteTodo = id => {
-    const newTodos = todos?.filter(todo => todo.id !== id)
-    setTodos(newTodos)
-    localStorage.setItem('todos', JSON.stringify(newTodos))
+  const deleteTodo = deletedTodo => {
+    if (deletedTodo.done === true) {
+      const newDoneTasks = doneTasks?.filter(todo => todo.id !== deletedTodo.id)
+      setDoneTasks(newDoneTasks)
+      localStorage.setItem('doneTasks', JSON.stringify(newDoneTasks))
+    } else {
+      const newTodos = todos?.filter(todo => todo.id !== deletedTodo.id)
+      setTodos(newTodos)
+      localStorage.setItem('todos', JSON.stringify(newTodos))
+    }
   }
 
   const completeTask = task => {
     const newTodos = todos?.filter(todo => todo.id !== task.id)
     setTodos(newTodos)
+    task.done = true
     setDoneTasks([...doneTasks, task])
     localStorage.setItem('doneTasks', JSON.stringify([...doneTasks, task]))
   }
@@ -53,7 +66,7 @@ const App = () => {
           </Button>
         </section>
 
-        {todos.length ? (
+        {todos?.length ? (
           todos?.map(todo => (
             <TodoCard
               key={todo.id}
@@ -68,7 +81,7 @@ const App = () => {
           </p>
         )}
 
-        {doneTasks.length
+        {doneTasks?.length
           ? doneTasks?.map(todo => (
               <TodoCard
                 key={todo.id}

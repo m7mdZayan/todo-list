@@ -25,7 +25,7 @@ const TodoCard = ({ todo, done, deleteTodo, completeTask }) => {
           <CalendarOutlined width="16" className="mr-1 text-base" /> {todo.date}
           <DeleteOutlined
             className="ml-6 text-base"
-            onClick={() => deleteTodo(todo.id)}
+            onClick={() => deleteTodo(todo)}
           />
         </span>
       </div>
