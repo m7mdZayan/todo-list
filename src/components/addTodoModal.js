@@ -43,7 +43,7 @@ const AddTodoModal = ({
         id: date
       }
 
-      setTodos([newTodo, ...todos])
+      setTodos([...todos, newTodo])
       localStorage.setItem('todos', JSON.stringify([newTodo, ...todos]))
 
       resetInputs()
