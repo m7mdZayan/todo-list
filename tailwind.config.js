@@ -5,15 +5,11 @@ module.exports = {
     extend: {
       colors: {
         'dark-bg': 'var(--dark-bg)',
-        'dark-card-bg': '--dark-card-bg)',
+        'dark-card-bg': 'var(--dark-card-bg)',
+        primary: 'var(--primary)',
         white: {
+          1000: 'var(--white)',
           500: 'var(--white-500)'
-        },
-        danger: {
-          50: 'var(--danger-50)',
-          100: 'var(--danger-100)',
-          300: 'var(--danger-300)',
-          400: 'var(--danger)'
         }
       }
     }

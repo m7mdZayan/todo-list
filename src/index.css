@@ -5,8 +5,10 @@
 :root {
   --dark-bg: rgba(36, 38, 44, 1);
   --dark-card-bg: rgba(41, 43, 49, 1);
-  --white: rgba(41, 43, 49, 1);
+  --white: rgba(255, 255, 255, 1);
   --white-500: rgba(255, 255, 255, 0.5);
+  --primary: #4b69ff;
+  --primary-100: #4096fe;
 }
 
 body {
@@ -18,4 +20,31 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--dark-bg);
   font-family: 'Exo 2', sans-serif;
+}
+
+/* Overrife ant desing styles */
+.ant-btn {
+  font-family: inherit !important;
+}
+
+.ant-btn:hover {
+  font-family: inherit !important;
+  background-color: var(--primary-100) !important;
+  color: var(--white) !important;
+}
+.ant-modal-header,
+.ant-modal-content {
+  background-color: var(--dark-bg) !important;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.ant-modal-title {
+  color: var(--white) !important;
+  font-weight: bold !important;
+  font-family: 'Exo 2', sans-serif;
+}
+
+.ant-input-outlined {
+  background: transparent !important;
+  font-family: inherit !important;
 }
