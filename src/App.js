@@ -6,6 +6,7 @@ import { useState } from 'react'
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')))
 
   const showModal = () => {
     setIsModalOpen(true)
@@ -20,11 +21,11 @@ const App = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-[100vh] font-bold">
+    <div className="flex justify-center font-bold mt-28">
       <main className="w-2/3">
         <section className="flex justify-between text-white-500 mb-8">
           <div>
-            <span className="inline-block mr-6">To do (4)</span>
+            <span className="inline-block mr-6">To do ({todos?.length})</span>
             <span>Done (1)</span>
           </div>
           <Button
@@ -36,32 +37,28 @@ const App = () => {
           </Button>
         </section>
 
-        <TodoCard
-          title="Design new ui presentation"
-          description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when unknown printer took a galley of type and scrambled it to make a type specimen book."
-          date="19 May 2022"
-        />
-        <TodoCard
-          title="Design new ui presentation"
-          description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when unknown printer took a galley of type and scrambled it to make a type specimen book."
-          date="19 May 2022"
-        />
-        <TodoCard
-          title="Design new ui presentation"
-          description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when unknown printer took a galley of type and scrambled it to make a type specimen book."
-          date="19 May 2022"
-        />
-        <TodoCard
-          title="Design new ui presentation"
-          description="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when unknown printer took a galley of type and scrambled it to make a type specimen book."
-          date="19 May 2022"
-        />
+        {todos.length ? (
+          todos?.map(todo => (
+            <TodoCard
+              key={todo.id}
+              date={todo.date}
+              title={todo.title}
+              description={todo.description}
+            />
+          ))
+        ) : (
+          <p className="text-white-1000 text-base text-center">
+            nothing to do today !
+          </p>
+        )}
       </main>
 
       <AddTodoModal
         isModalOpen={isModalOpen}
+        todos={todos}
         handleOk={handleOk}
         handleCancel={handleCancel}
+        setTodos={setTodos}
       />
     </div>
   )

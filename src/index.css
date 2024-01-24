@@ -32,6 +32,14 @@ body {
   background-color: var(--primary-100) !important;
   color: var(--white) !important;
 }
+
+.ant-btn-link {
+  color: var(--white);
+}
+.ant-btn-link:hover {
+  background: transparent !important;
+}
+
 .ant-modal-header,
 .ant-modal-content {
   background-color: var(--dark-bg) !important;
