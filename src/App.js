@@ -7,6 +7,9 @@ import { useState } from 'react'
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')))
+  const [doneTasks, setDoneTasks] = useState(
+    JSON.parse(localStorage.getItem('doneTasks'))
+  )
 
   const showModal = () => {
     setIsModalOpen(true)
@@ -21,11 +24,16 @@ const App = () => {
   }
 
   const deleteTodo = id => {
-    console.log(id)
     const newTodos = todos?.filter(todo => todo.id !== id)
-
     setTodos(newTodos)
     localStorage.setItem('todos', JSON.stringify(newTodos))
+  }
+
+  const completeTask = task => {
+    const newTodos = todos?.filter(todo => todo.id !== task.id)
+    setTodos(newTodos)
+    setDoneTasks([...doneTasks, task])
+    localStorage.setItem('doneTasks', JSON.stringify([...doneTasks, task]))
   }
 
   return (
@@ -34,7 +42,7 @@ const App = () => {
         <section className="flex justify-between text-white-500 mb-8">
           <div>
             <span className="inline-block mr-6">To do ({todos?.length})</span>
-            <span>Done (1)</span>
+            <span>Done ({doneTasks?.length})</span>
           </div>
           <Button
             className="bg-primary border-0 px-4 py-2 h-auto text-white-1000 rounded-[12px] text-sm font-bold"
@@ -48,19 +56,29 @@ const App = () => {
         {todos.length ? (
           todos?.map(todo => (
             <TodoCard
-              todo={todo}
               key={todo.id}
-              date={todo.date}
-              title={todo.title}
-              description={todo.description}
+              todo={todo}
               deleteTodo={deleteTodo}
+              completeTask={completeTask}
             />
           ))
         ) : (
-          <p className="text-white-1000 text-base text-center">
+          <p className="text-white-1000 text-base text-center mb-4">
             nothing to do today !
           </p>
         )}
+
+        {doneTasks.length
+          ? doneTasks?.map(todo => (
+              <TodoCard
+                key={todo.id}
+                todo={todo}
+                done={true}
+                deleteTodo={deleteTodo}
+                completeTask={completeTask}
+              />
+            ))
+          : null}
       </main>
 
       <AddTodoModal

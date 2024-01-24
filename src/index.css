@@ -9,6 +9,7 @@
   --white-500: rgba(255, 255, 255, 0.5);
   --primary: #4b69ff;
   --primary-100: #4096fe;
+  --done: #78d700;
 }
 
 body {

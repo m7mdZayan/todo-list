@@ -7,6 +7,7 @@ module.exports = {
         'dark-bg': 'var(--dark-bg)',
         'dark-card-bg': 'var(--dark-card-bg)',
         primary: 'var(--primary)',
+        done: 'var(--done)',
         white: {
           1000: 'var(--white)',
           500: 'var(--white-500)'

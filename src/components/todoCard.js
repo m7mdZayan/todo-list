@@ -2,17 +2,22 @@ import { Checkbox } from 'antd'
 
 import { CalendarOutlined, DeleteOutlined } from '@ant-design/icons'
 
-const TodoCard = ({ todo, deleteTodo }) => {
-  const onChange = e => {
-    console.log(`checked = ${e.target.checked}`)
+const TodoCard = ({ todo, done, deleteTodo, completeTask }) => {
+  const handleCheckChange = completedTask => {
+    completeTask(completedTask)
   }
 
   return (
     <div className="bg-dark-card-bg p-6 rounded-xl text-white-500 mb-8 last:mb-0 ">
       <div className="flex justify-between mb-2">
         <div>
-          <Checkbox onChange={onChange}></Checkbox>
-          <h3 className="inline-block ml-2 text-white-1000 text-base">
+          <Checkbox
+            checked={done}
+            onChange={() => handleCheckChange(todo)}
+          ></Checkbox>
+          <h3
+            className={`inline-block ml-2 text-base ${done ? 'text-done line-through' : 'text-white-1000'}`}
+          >
             {todo.title}
           </h3>
         </div>
