@@ -20,6 +20,14 @@ const App = () => {
     setIsModalOpen(false)
   }
 
+  const deleteTodo = id => {
+    console.log(id)
+    const newTodos = todos?.filter(todo => todo.id !== id)
+
+    setTodos(newTodos)
+    localStorage.setItem('todos', JSON.stringify(newTodos))
+  }
+
   return (
     <div className="flex justify-center font-bold mt-28">
       <main className="w-2/3">
@@ -40,10 +48,12 @@ const App = () => {
         {todos.length ? (
           todos?.map(todo => (
             <TodoCard
+              todo={todo}
               key={todo.id}
               date={todo.date}
               title={todo.title}
               description={todo.description}
+              deleteTodo={deleteTodo}
             />
           ))
         ) : (

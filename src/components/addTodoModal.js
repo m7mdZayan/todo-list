@@ -66,7 +66,7 @@ const AddTodoModal = ({
       closeIcon={<CloseCircleOutlined className="text-white-500 text-base" />}
       className="bg-dark-bg text-white-500 rounded-xl"
       footer={[
-        <Button onClick={handleCancel} type="link">
+        <Button key="cancel" onClick={handleCancel} type="link">
           Cancel
         </Button>,
         <Button key="submit" type="primary" onClick={addTodo}>

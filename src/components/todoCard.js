@@ -2,7 +2,7 @@ import { Checkbox } from 'antd'
 
 import { CalendarOutlined, DeleteOutlined } from '@ant-design/icons'
 
-const TodoCard = ({ title, description, date }) => {
+const TodoCard = ({ todo, deleteTodo }) => {
   const onChange = e => {
     console.log(`checked = ${e.target.checked}`)
   }
@@ -13,15 +13,18 @@ const TodoCard = ({ title, description, date }) => {
         <div>
           <Checkbox onChange={onChange}></Checkbox>
           <h3 className="inline-block ml-2 text-white-1000 text-base">
-            {title}
+            {todo.title}
           </h3>
         </div>
         <span className="text-sm">
-          <CalendarOutlined width="16" className="mr-1 text-base" /> {date}
-          <DeleteOutlined className="ml-6 text-base" />
+          <CalendarOutlined width="16" className="mr-1 text-base" /> {todo.date}
+          <DeleteOutlined
+            className="ml-6 text-base"
+            onClick={() => deleteTodo(todo.id)}
+          />
         </span>
       </div>
-      <p className="text-sm">{description}</p>
+      <p className="text-sm">{todo.description}</p>
     </div>
   )
 }
