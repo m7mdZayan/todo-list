@@ -8,7 +8,7 @@ const TodoCard = ({ todo, done, deleteTodo, completeTask }) => {
   }
 
   return (
-    <div className="bg-dark-card-bg p-6 rounded-xl text-white-500 mb-8 last:mb-0 ">
+    <div className="p-3 bg-dark-card-bg md:p-6 rounded-xl text-white-500 mb-8 last:mb-0 ">
       <div className="flex justify-between mb-2">
         <div>
           <Checkbox
