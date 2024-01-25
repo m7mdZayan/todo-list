@@ -63,7 +63,7 @@ const AddTodoModal = ({
       open={isModalOpen}
       onOk={handleOk}
       onCancel={handleCancel}
-      closeIcon={<CloseCircleOutlined className="text-white-500 text-base" />}
+      closeIcon={<CloseCircleOutlined className="text-white-500 text-lg " />}
       className="bg-dark-bg text-white-500 rounded-xl"
       footer={[
         <Button key="cancel" onClick={handleCancel} type="link">
@@ -84,7 +84,7 @@ const AddTodoModal = ({
       </label>
       <Input
         id="title"
-        className="text-white-1000 mb-4"
+        className="text-white-1000 mb-2"
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
@@ -94,7 +94,7 @@ const AddTodoModal = ({
       </label>
       <TextArea
         id="description"
-        className="text-white-1000"
+        className="text-white-1000 mb-2"
         autoSize={{ minRows: 2 }}
         value={description}
         onChange={e => setDescription(e.target.value)}
