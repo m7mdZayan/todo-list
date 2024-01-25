@@ -14,26 +14,29 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background: var(--dark-bg);
   font-family: 'Exo 2', sans-serif;
 }
 
 /* Overrife ant desing styles */
+
+/* buttons */
 .ant-btn {
   font-family: inherit !important;
 }
-
 .ant-btn:hover {
   font-family: inherit !important;
   background-color: var(--primary-100) !important;
   color: var(--white) !important;
 }
 
+.ant-btn-default:disabled {
+  color: var(--white) !important;
+}
+
+.ant-btn-default:disabled:hover {
+  background: transparent !important;
+}
 .ant-btn-link {
   color: var(--white);
 }
@@ -41,6 +44,7 @@ body {
   background: transparent !important;
 }
 
+/* modal  */
 .ant-modal-header,
 .ant-modal-content {
   background-color: var(--dark-bg) !important;
@@ -53,6 +57,7 @@ body {
   font-family: 'Exo 2', sans-serif;
 }
 
+/* inputs */
 .ant-input-outlined {
   background: transparent !important;
   font-family: inherit !important;

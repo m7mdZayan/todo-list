@@ -69,7 +69,12 @@ const AddTodoModal = ({
         <Button key="cancel" onClick={handleCancel} type="link">
           Cancel
         </Button>,
-        <Button key="submit" type="primary" onClick={addTodo}>
+        <Button
+          key="submit"
+          disabled={!title || !description}
+          onClick={addTodo}
+          className="bg-primary border-0 px-4 py-2 h-auto text-white-1000 rounded-[12px] text-sm font-bold"
+        >
           Add
         </Button>
       ]}
