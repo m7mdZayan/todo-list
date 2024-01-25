@@ -51,7 +51,7 @@ const App = () => {
 
   return (
     <div className="flex justify-center font-bold mt-28">
-      <main className="w-2/3">
+      <main className="w-full px-2 md:px-0 md:w-2/3">
         <section className="flex justify-between text-white-500 mb-8">
           <div>
             <span className="inline-block mr-6">To do ({todos?.length})</span>
